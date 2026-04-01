@@ -806,7 +806,7 @@ CREATE INDEX idx_todos_dueDate ON todos(dueDate);
 | POST | `/api/todos` | UC-04 | 할일 생성 |
 | GET | `/api/todos` | UC-05 | 할일 목록 조회 |
 | GET | `/api/todos/:todoId` | UC-06 | 할일 상세 조회 |
-| PUT | `/api/todos/:todoId` | UC-07 | 할일 수정 |
+| PATCH | `/api/todos/:todoId` | UC-07 | 할일 수정 |
 | PATCH | `/api/todos/:todoId/complete` | UC-08 | 할일 완료 처리 |
 
 ### 9.2 오류 코드 요약
