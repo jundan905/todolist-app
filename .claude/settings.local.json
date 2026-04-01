@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__postgresql-mcp__pg_execute_query",
+      "mcp__postgresql-mcp__pg_execute_sql",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)"
+    ]
+  }
+}

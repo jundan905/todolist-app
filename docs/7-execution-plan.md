@@ -69,11 +69,11 @@
 - 제약조건 설정 (`UNIQUE` email, `CHECK` due_date >= start_date)
 
 #### 완료 조건
-- [ ] PostgreSQL 서버 정상 실행 확인
-- [ ] `users` 테이블 생성 및 컬럼 확인
-- [ ] `todos` 테이블 생성 및 컬럼 확인
-- [ ] 외래키 제약조건 정상 적용 확인
-- [ ] `CHECK (due_date >= start_date)` 제약조건 확인
+- [x] PostgreSQL 서버 정상 실행 확인
+- [x] `users` 테이블 생성 및 컬럼 확인
+- [x] `todos` 테이블 생성 및 컬럼 확인
+- [x] 외래키 제약조건 정상 적용 확인
+- [x] `CHECK (due_date >= start_date)` 제약조건 확인
 
 ---
 
@@ -89,12 +89,12 @@
 - `idx_todos_user_completed` 복합 인덱스 생성 (user_id, is_completed)
 
 #### 완료 조건
-- [ ] `idx_todos_user_id` 생성 확인
-- [ ] `idx_todos_due_date` 생성 확인
-- [ ] `idx_todos_start_date` 생성 확인
-- [ ] `idx_todos_created_at` 생성 확인
-- [ ] `idx_todos_user_completed` 복합 인덱스 생성 확인
-- [ ] EXPLAIN ANALYZE로 인덱스 사용 확인
+- [x] `idx_todos_user_id` 생성 확인
+- [x] `idx_todos_due_date` 생성 확인
+- [x] `idx_todos_start_date` 생성 확인
+- [x] `idx_todos_created_at` 생성 확인
+- [x] `idx_todos_user_completed` 복합 인덱스 생성 확인
+- [x] EXPLAIN ANALYZE로 인덱스 사용 확인
 
 ---
 
@@ -110,11 +110,11 @@
 - `pool` 기본 export, `closePool()` 함수 제공
 
 #### 완료 조건
-- [ ] `database.ts` 파일 생성
-- [ ] Pool 설정값 (max: 20, idleTimeout: 30s, connectionTimeout: 2s) 적용 확인
-- [ ] `await pool.query('SELECT NOW()')` 성공 확인
-- [ ] 환경변수 누락 시 에러 로그 출력 확인
-- [ ] `closePool()` 함수 정상 동작 확인
+- [x] `database.ts` 파일 생성
+- [x] Pool 설정값 (max: 20, idleTimeout: 30s, connectionTimeout: 2s) 적용 확인
+- [x] `await pool.query('SELECT NOW()')` 성공 확인
+- [x] 환경변수 누락 시 에러 로그 출력 확인
+- [x] `closePool()` 함수 정상 동작 확인
 
 ---
 
