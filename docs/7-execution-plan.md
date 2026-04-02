@@ -236,10 +236,10 @@
 - `tsconfig.json`, `jest.config.ts`, `.eslintrc.json`, `.prettierrc` 설정
 
 #### 완료 조건
-- [ ] `package.json` 생성 (필수 의존성 모두 포함)
-- [ ] 디렉토리 구조 완성
-- [ ] `npm run build` 성공 (TypeScript 컴파일)
-- [ ] `npm run typecheck` 오류 없음
+- [x] `package.json` 생성 (필수 의존성 모두 포함)
+- [x] 디렉토리 구조 완성
+- [x] `npm run build` 성공 (TypeScript 컴파일)
+- [x] `npm run typecheck` 오류 없음
 
 ---
 
@@ -252,10 +252,10 @@
 - `src/config/database.ts`: `pg.Pool` 생성 (max: 20, idleTimeoutMillis: 30000, connectionTimeoutMillis: 2000)
 
 #### 완료 조건
-- [ ] 필수 환경변수 누락 시 `process.exit(1)` 실행 확인
-- [ ] `config` 객체에서 모든 설정값 접근 가능
-- [ ] `await pool.query('SELECT NOW()')` 성공
-- [ ] Connection Pool 설정값 (max: 20) 적용 확인
+- [x] 필수 환경변수 누락 시 `process.exit(1)` 실행 확인
+- [x] `config` 객체에서 모든 설정값 접근 가능
+- [x] `await pool.query('SELECT NOW()')` 성공
+- [x] Connection Pool 설정값 (max: 20) 적용 확인
 
 ---
 
@@ -271,11 +271,11 @@
 - `src/types/auth.types.ts`, `src/types/todo.types.ts`, `src/types/express.d.ts` 타입 정의
 
 #### 완료 조건
-- [ ] `AppError` throw/catch 정상 동작
-- [ ] `computeTodoStatus()` 5가지 상태 모두 정확히 반환 (경계값 포함)
-- [ ] `hashPassword()` bcrypt cost factor 12 적용 확인
-- [ ] TypeScript 타입 정의 완료 (User, Todo, JwtPayload, CreateTodoInput 등)
-- [ ] `req.user: JwtPayload` 타입 확장 (`express.d.ts`)
+- [x] `AppError` throw/catch 정상 동작
+- [x] `computeTodoStatus()` 5가지 상태 모두 정확히 반환 (경계값 포함)
+- [x] `hashPassword()` bcrypt cost factor 12 적용 확인
+- [x] TypeScript 타입 정의 완료 (User, Todo, JwtPayload, CreateTodoInput 등)
+- [x] `req.user: JwtPayload` 타입 확장 (`express.d.ts`)
 
 ---
 
@@ -292,11 +292,11 @@
 - CORS 설정 (`CORS_ORIGIN` 환경변수 사용)
 
 #### 완료 조건
-- [ ] `npm run dev` 서버 정상 시작
-- [ ] 에러 미들웨어가 `AppError`를 `{ error: { code, message } }` JSON으로 변환 확인
-- [ ] 요청 로그 형식 `POST /api/auth/login 200 45ms` 출력 확인
-- [ ] JWT 검증 미들웨어: 정상 토큰 → `req.user` 설정, 만료 → 401 응답
-- [ ] CORS 헤더 적용 확인
+- [x] `npm run dev` 서버 정상 시작
+- [x] 에러 미들웨어가 `AppError`를 `{ error: { code, message } }` JSON으로 변환 확인
+- [x] 요청 로그 형식 `POST /api/auth/login 200 45ms` 출력 확인
+- [x] JWT 검증 미들웨어: 정상 토큰 → `req.user` 설정, 만료 → 401 응답
+- [x] CORS 헤더 적용 확인
 
 ---
 
@@ -311,11 +311,11 @@
   - `login()`: 이메일 존재 확인, 비밀번호 대조, JWT 발급 (HS256, 1h)
 
 #### 완료 조건
-- [ ] `findByEmail()` Parameterized Query 사용 확인
-- [ ] `signup()` 비밀번호 복잡도 위반 시 400 throw (BR-11)
-- [ ] `signup()` 중복 이메일 시 409 throw (BR-10)
-- [ ] `login()` 성공 시 JWT 발급 (payload: userId, email, iat, exp)
-- [ ] `login()` 비밀번호 불일치 시 401 throw
+- [x] `findByEmail()` Parameterized Query 사용 확인
+- [x] `signup()` 비밀번호 복잡도 위반 시 400 throw (BR-11)
+- [x] `signup()` 중복 이메일 시 409 throw (BR-10)
+- [x] `login()` 성공 시 JWT 발급 (payload: userId, email, iat, exp)
+- [x] `login()` 비밀번호 불일치 시 401 throw
 
 ---
 
@@ -331,13 +331,13 @@
   - `POST /api/auth/logout` → `authMiddleware` → `handleLogout`
 
 #### 완료 조건
-- [ ] `POST /api/auth/signup` 201 응답 (AC-01-1)
-- [ ] `POST /api/auth/signup` 409 응답 — 중복 이메일 (AC-01-2)
-- [ ] `POST /api/auth/signup` 400 응답 — 형식 오류 (AC-01-3)
-- [ ] `POST /api/auth/login` 200 응답 + JWT (AC-02-1)
-- [ ] `POST /api/auth/login` 401 응답 — 비밀번호 불일치 (AC-02-2)
-- [ ] `POST /api/auth/login` 401 응답 — 이메일 미존재 (AC-02-3)
-- [ ] `POST /api/auth/logout` 200 응답 (인증된 사용자)
+- [x] `POST /api/auth/signup` 201 응답 (AC-01-1)
+- [x] `POST /api/auth/signup` 409 응답 — 중복 이메일 (AC-01-2)
+- [x] `POST /api/auth/signup` 400 응답 — 형식 오류 (AC-01-3)
+- [x] `POST /api/auth/login` 200 응답 + JWT (AC-02-1)
+- [x] `POST /api/auth/login` 401 응답 — 비밀번호 불일치 (AC-02-2)
+- [x] `POST /api/auth/login` 401 응답 — 이메일 미존재 (AC-02-3)
+- [x] `POST /api/auth/logout` 200 응답 (인증된 사용자)
 
 ---
 
@@ -352,12 +352,12 @@
 - 모든 쿼리 `WHERE user_id = $?` 포함, Parameterized Query 사용
 
 #### 완료 조건
-- [ ] `insertTodo()` DB 저장 확인
-- [ ] `findByUserId()` status 필터 6가지 모두 정확 동작
-- [ ] 페이지네이션 OFFSET/LIMIT 적용 확인
-- [ ] `WHERE user_id = $?` 모든 쿼리 포함 확인
-- [ ] Parameterized Query 사용 확인 (SQL Injection 방지)
-- [ ] `countByUserId()` 전체 레코드 수 정확 반환
+- [x] `insertTodo()` DB 저장 확인
+- [x] `findByUserId()` status 필터 6가지 모두 정확 동작
+- [x] 페이지네이션 OFFSET/LIMIT 적용 확인
+- [x] `WHERE user_id = $?` 모든 쿼리 포함 확인
+- [x] Parameterized Query 사용 확인 (SQL Injection 방지)
+- [x] `countByUserId()` 전체 레코드 수 정확 반환
 
 ---
 
@@ -374,13 +374,13 @@
 - `toggleTodoComplete()`: 권한 검증 → BR-05/BR-06 처리 → `updateTodoStatus()`
 
 #### 완료 조건
-- [ ] `createTodo()` dueDate < startDate 시 400 (BR-04, AC-04-2)
-- [ ] `createTodo()` startDate 누락 시 400 (BR-03, AC-04-3)
-- [ ] `getTodoList()` 본인 할일만 반환 (BR-02, AC-05-1)
-- [ ] `getTodoList()` status 필터 정상 동작 (AC-05-2)
-- [ ] `toggleTodoComplete()` isCompleted=true 시 completedAt 서버 시각 기록 (BR-05, AC-08-1)
-- [ ] `toggleTodoComplete()` isCompleted=false 시 completedAt null (BR-06, AC-08-2)
-- [ ] 타인 할일 접근 시 403 throw (BR-02, AC-08-3)
+- [x] `createTodo()` dueDate < startDate 시 400 (BR-04, AC-04-2)
+- [x] `createTodo()` startDate 누락 시 400 (BR-03, AC-04-3)
+- [x] `getTodoList()` 본인 할일만 반환 (BR-02, AC-05-1)
+- [x] `getTodoList()` status 필터 정상 동작 (AC-05-2)
+- [x] `toggleTodoComplete()` isCompleted=true 시 completedAt 서버 시각 기록 (BR-05, AC-08-1)
+- [x] `toggleTodoComplete()` isCompleted=false 시 completedAt null (BR-06, AC-08-2)
+- [x] 타인 할일 접근 시 403 throw (BR-02, AC-08-3)
 
 ---
 
@@ -400,14 +400,14 @@
 - 쿼리 파라미터 검증 (page ≥ 1, limit 1~100, status/sortBy/sortOrder 허용값)
 
 #### 완료 조건
-- [ ] `POST /api/todos` 201 응답 (UC-04)
-- [ ] `GET /api/todos` 200 응답 + pagination 객체 (UC-05)
-- [ ] `GET /api/todos/:todoId` 200 응답 (UC-06)
-- [ ] `PATCH /api/todos/:todoId` 200 응답 (UC-07)
-- [ ] `PATCH /api/todos/:todoId/complete` 200 응답 (UC-08)
-- [ ] 미인증 요청 시 401 응답 (모든 라우트)
-- [ ] page=0 또는 limit=101 요청 시 400 응답
-- [ ] 타인 할일 접근 시 403 응답
+- [x] `POST /api/todos` 201 응답 (UC-04)
+- [x] `GET /api/todos` 200 응답 + pagination 객체 (UC-05)
+- [x] `GET /api/todos/:todoId` 200 응답 (UC-06)
+- [x] `PATCH /api/todos/:todoId` 200 응답 (UC-07)
+- [x] `PATCH /api/todos/:todoId/complete` 200 응답 (UC-08)
+- [x] 미인증 요청 시 401 응답 (모든 라우트)
+- [x] page=0 또는 limit=101 요청 시 400 응답
+- [x] 타인 할일 접근 시 403 응답
 
 ---
 
@@ -421,11 +421,11 @@
 - `CHECK (due_date >= start_date)` 제약 동작 확인
 
 #### 완료 조건
-- [ ] `users`, `todos` 테이블 생성 확인
-- [ ] 이메일 UNIQUE 제약 확인
-- [ ] `userId` FK 제약 확인
-- [ ] CASCADE DELETE 테스트 통과
-- [ ] `CHECK (due_date >= start_date)` 위반 시 DB 에러 발생 확인
+- [x] `users`, `todos` 테이블 생성 확인
+- [x] 이메일 UNIQUE 제약 확인
+- [x] `userId` FK 제약 확인
+- [x] CASCADE DELETE 테스트 통과
+- [x] `CHECK (due_date >= start_date)` 위반 시 DB 에러 발생 확인
 
 ---
 
@@ -439,12 +439,12 @@
 - 실제 PostgreSQL 테스트 DB 연결 사용
 
 #### 완료 조건
-- [ ] AC-01-1~3, AC-02-1~3 테스트 케이스 통과
-- [ ] AC-04-1~3, AC-05-1~3, AC-08-1~3 테스트 케이스 통과
-- [ ] page=0, limit=101 → 400 경계값 테스트 통과
-- [ ] status 필터 6가지 테스트 통과
-- [ ] 권한 검증 (403) 테스트 통과
-- [ ] JWT 만료/미제공 (401) 테스트 통과
+- [x] AC-01-1~3, AC-02-1~3 테스트 케이스 통과
+- [x] AC-04-1~3, AC-05-1~3, AC-08-1~3 테스트 케이스 통과
+- [x] page=0, limit=101 → 400 경계값 테스트 통과
+- [x] status 필터 6가지 테스트 통과
+- [x] 권한 검증 (403) 테스트 통과
+- [x] JWT 만료/미제공 (401) 테스트 통과
 
 ---
 
@@ -458,11 +458,11 @@
 - `tests/unit/todoService.test.ts`: BR-03, BR-04, BR-05, BR-06 로직 테스트
 
 #### 완료 조건
-- [ ] `computeTodoStatus()` 5가지 상태 모두 커버 (우선순위 경계값 포함)
-- [ ] 비밀번호 복잡도 검증 테스트 (유효/무효 케이스 각 3개 이상)
-- [ ] bcrypt 해싱/비교 테스트 통과
-- [ ] BR-04 위반 케이스 (dueDate < startDate) 테스트 통과
-- [ ] 테스트 커버리지 80% 이상
+- [x] `computeTodoStatus()` 5가지 상태 모두 커버 (우선순위 경계값 포함)
+- [x] 비밀번호 복잡도 검증 테스트 (유효/무효 케이스 각 3개 이상)
+- [x] bcrypt 해싱/비교 테스트 통과
+- [x] BR-04 위반 케이스 (dueDate < startDate) 테스트 통과
+- [x] 테스트 커버리지 80% 이상
 
 ---
 
@@ -477,11 +477,11 @@
 - Connection Pool 동시 요청 처리 테스트
 
 #### 완료 조건
-- [ ] `npm run build` 성공
-- [ ] 프로덕션 환경에서 에러 응답에 스택 트레이스 미포함
-- [ ] 기본 API 응답시간 300ms 이하
-- [ ] 동시 요청 100개 처리 성공
-- [ ] 모든 테스트 통과 상태에서 배포 준비 완료
+- [x] `npm run build` 성공
+- [x] 프로덕션 환경에서 에러 응답에 스택 트레이스 미포함
+- [x] 기본 API 응답시간 300ms 이하
+- [x] 동시 요청 100개 처리 성공
+- [x] 모든 테스트 통과 상태에서 배포 준비 완료
 
 ---
 
@@ -521,7 +521,7 @@
 - `src/types/todo.types.ts`, `src/types/auth.types.ts`, `src/types/api.types.ts` 타입 정의
 
 #### 완료 조건
-- [ ] `computeTodoStatus()` 5가지 상태 정확 계산 확인 (다양한 날짜 조합 테스트)
+- [x] `computeTodoStatus()` 5가지 상태 정확 계산 확인 (다양한 날짜 조합 테스트)
 - [ ] 비밀번호 복잡도 검증 유효/무효 케이스 각 3개 이상 통과
 - [ ] 날짜 비교 시 timezone 이슈 없음 확인
 - [ ] 모든 타입이 API 명세와 일치

@@ -3,7 +3,7 @@
   "info": {
     "title": "todolist-app API",
     "description": "개인별 할일 관리 웹 애플리케이션 REST API\n\n## 인증\n모든 보호된 엔드포인트는 `Authorization: Bearer <accessToken>` 헤더가 필요합니다.\n\n## 할일 상태 (status)\n상태는 DB 컬럼 없이 아래 우선순위 규칙으로 파생됩니다. **응답 본문의 status 필드에는 CLOSED가 포함되지 않습니다.** CLOSED는 목록 조회 시 status 쿼리 파라미터로만 사용되는 UI 필터 전용 값입니다.\n\n| 우선순위 | 조건 | 상태 |\n|---|---|---|\n| 1 | isCompleted=true AND completedAt <= dueDate | COMPLETED |\n| 2 | isCompleted=true AND completedAt > dueDate | LATE_COMPLETED |\n| 3 | 현재날짜 < startDate | UPCOMING |\n| 4 | startDate <= 현재날짜 <= dueDate AND isCompleted=false | IN_PROGRESS |\n| 5 | 현재날짜 > dueDate AND isCompleted=false | FAILED |",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "contact": {
       "name": "Dan Jung"
     }
@@ -16,6 +16,10 @@
   ],
   "tags": [
     {
+      "name": "Health",
+      "description": "서버 상태 확인"
+    },
+    {
       "name": "Auth",
       "description": "인증 관련 API (회원가입, 로그인, 로그아웃)"
     },
@@ -25,6 +29,35 @@
     }
   ],
   "paths": {
+    "/health": {
+      "get": {
+        "tags": ["Health"],
+        "summary": "서버 상태 확인",
+        "description": "서버가 정상 동작 중인지 확인합니다.",
+        "operationId": "healthCheck",
+        "responses": {
+          "200": {
+            "description": "서버 정상",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "example": {
+                  "status": "ok"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/auth/signup": {
       "post": {
         "tags": ["Auth"],
@@ -72,7 +105,10 @@
                   "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "example": {
-                  "message": "비밀번호는 8~20자이며 영문 대소문자, 숫자, 특수문자(`!@#$%^&*)를 각 1자 이상 포함해야 합니다."
+                  "error": {
+                    "code": "INVALID_PASSWORD",
+                    "message": "비밀번호는 8~20자이며 영문 대소문자, 숫자, 특수문자(`!@#$%^&*)를 각 1자 이상 포함해야 합니다."
+                  }
                 }
               }
             }
@@ -85,7 +121,10 @@
                   "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "example": {
-                  "message": "이미 사용 중인 이메일입니다."
+                  "error": {
+                    "code": "EMAIL_ALREADY_EXISTS",
+                    "message": "이미 사용 중인 이메일입니다."
+                  }
                 }
               }
             }
@@ -155,7 +194,10 @@
                   "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "example": {
-                  "message": "이메일 또는 비밀번호가 올바르지 않습니다."
+                  "error": {
+                    "code": "INVALID_CREDENTIALS",
+                    "message": "이메일 또는 비밀번호가 올바르지 않습니다."
+                  }
                 }
               }
             }
@@ -262,7 +304,10 @@
                   "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "example": {
-                  "message": "dueDate는 startDate 이상이어야 합니다."
+                  "error": {
+                    "code": "INVALID_DATE_RANGE",
+                    "message": "dueDate는 startDate 이상이어야 합니다."
+                  }
                 }
               }
             }
@@ -393,7 +438,10 @@
                   "$ref": "#/components/schemas/ErrorResponse"
                 },
                 "example": {
-                  "message": "page는 1 이상의 정수여야 합니다."
+                  "error": {
+                    "code": "INVALID_PARAMETER",
+                    "message": "page는 1 이상의 정수여야 합니다."
+                  }
                 }
               }
             }
@@ -885,9 +933,18 @@
       "ErrorResponse": {
         "type": "object",
         "properties": {
-          "message": {
-            "type": "string",
-            "description": "에러 메시지"
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "에러 코드"
+              },
+              "message": {
+                "type": "string",
+                "description": "에러 메시지"
+              }
+            }
           }
         }
       }
@@ -901,7 +958,10 @@
               "$ref": "#/components/schemas/ErrorResponse"
             },
             "example": {
-              "message": "인증이 필요합니다."
+              "error": {
+                "code": "UNAUTHORIZED",
+                "message": "인증이 필요합니다."
+              }
             }
           }
         }
@@ -914,7 +974,10 @@
               "$ref": "#/components/schemas/ErrorResponse"
             },
             "example": {
-              "message": "접근 권한이 없습니다."
+              "error": {
+                "code": "FORBIDDEN",
+                "message": "접근 권한이 없습니다."
+              }
             }
           }
         }
@@ -927,7 +990,10 @@
               "$ref": "#/components/schemas/ErrorResponse"
             },
             "example": {
-              "message": "할일을 찾을 수 없습니다."
+              "error": {
+                "code": "TODO_NOT_FOUND",
+                "message": "할일을 찾을 수 없습니다."
+              }
             }
           }
         }
@@ -940,7 +1006,10 @@
               "$ref": "#/components/schemas/ErrorResponse"
             },
             "example": {
-              "message": "서버 오류가 발생했습니다."
+              "error": {
+                "code": "INTERNAL_SERVER_ERROR",
+                "message": "서버 오류가 발생했습니다."
+              }
             }
           }
         }

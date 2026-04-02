@@ -2,12 +2,14 @@ const requiredEnv = (key: string): string => {
   const value = process.env[key];
   if (!value) {
     console.error(`[Config] 필수 환경변수 누락: ${key}`);
-    throw new Error(`필수 환경변수 누락: ${key}`);
+    process.exit(1);
   }
   return value;
 };
 
 export const config = {
+  port: Number(process.env.PORT ?? 3000),
+  nodeEnv: process.env.NODE_ENV ?? 'development',
   db: {
     url: requiredEnv('DATABASE_URL'),
     pool: {

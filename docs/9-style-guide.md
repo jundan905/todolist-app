@@ -1,0 +1,242 @@
+# 프론트엔드 스타일 가이드
+
+Yahoo Finance 레퍼런스 기반 — 정보 밀도가 높고 깔끔한 데이터 중심 UI
+
+---
+
+## 1. 색상 시스템
+
+### 브랜드 색상
+
+| 이름 | Hex | 용도 |
+|---|---|---|
+| `brand-primary` | `#6001D2` | 로고, 주요 액션 버튼 강조 |
+| `brand-accent` | `#00857C` | 활성 탭, 링크 hover, 포커스 링 |
+
+### 기능 색상
+
+| 이름 | Hex | 용도 |
+|---|---|---|
+| `status-positive` | `#0B8043` | 완료(COMPLETED), 성공 상태 |
+| `status-negative` | `#C62828` | 실패(FAILED), 오류 상태 |
+| `status-warning` | `#E65100` | 지연 완료(LATE_COMPLETED) |
+| `status-info` | `#1565C0` | 진행 중(IN_PROGRESS) |
+| `status-neutral` | `#546E7A` | 예정(UPCOMING) |
+
+### 중립 색상
+
+| 이름 | Hex | 용도 |
+|---|---|---|
+| `neutral-900` | `#1A1A1A` | 주요 텍스트, 헤딩 |
+| `neutral-700` | `#404040` | 본문 텍스트 |
+| `neutral-500` | `#767676` | 보조 텍스트, 레이블 |
+| `neutral-300` | `#BDBDBD` | 비활성 요소, 구분선 |
+| `neutral-100` | `#F5F5F5` | 배경 대비 영역, 카드 hover |
+| `neutral-000` | `#FFFFFF` | 기본 배경 |
+
+### 서피스 색상
+
+| 이름 | Hex | 용도 |
+|---|---|---|
+| `surface-dark` | `#2D2D2D` | 다크 배너, 모달 오버레이 |
+| `surface-card` | `#FFFFFF` | 카드 배경 |
+| `surface-page` | `#F8F8F8` | 페이지 배경 |
+| `border-default` | `#E0E0E0` | 기본 테두리 |
+| `border-strong` | `#BDBDBD` | 구분선, 강조 테두리 |
+
+---
+
+## 2. 타이포그래피
+
+### 폰트 패밀리
+
+```css
+--font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+--font-mono: 'JetBrains Mono', 'Fira Code', monospace; /* 날짜, 수치 데이터 */
+```
+
+### 타입 스케일
+
+| 토큰 | 크기 | 굵기 | Line-height | 용도 |
+|---|---|---|---|---|
+| `text-xs` | 11px | 400 | 1.4 | 타임스탬프, 뱃지 레이블 |
+| `text-sm` | 13px | 400 | 1.5 | 보조 텍스트, 입력 힌트 |
+| `text-base` | 15px | 400 | 1.6 | 본문, 카드 내용 |
+| `text-md` | 17px | 500 | 1.5 | 카드 제목 |
+| `text-lg` | 20px | 600 | 1.4 | 섹션 헤딩 |
+| `text-xl` | 24px | 700 | 1.3 | 페이지 타이틀 |
+| `text-2xl` | 30px | 700 | 1.2 | 히어로 타이틀 |
+
+### 사용 규칙
+
+- 수치 데이터(날짜, 카운트)는 `font-mono` + tabular numbers(`font-variant-numeric: tabular-nums`)
+- 헤딩은 letter-spacing `-0.02em`
+- 본문 최대 가독 너비: `65ch`
+
+---
+
+## 3. 간격 시스템
+
+8px 베이스 그리드 기반.
+
+| 토큰 | 값 | 용도 |
+|---|---|---|
+| `space-1` | 4px | 아이콘-텍스트 간격 |
+| `space-2` | 8px | 인라인 요소 간격 |
+| `space-3` | 12px | 소형 컴포넌트 패딩 |
+| `space-4` | 16px | 카드 내부 패딩, 기본 gap |
+| `space-5` | 20px | 섹션 내 요소 간격 |
+| `space-6` | 24px | 카드 외부 여백 |
+| `space-8` | 32px | 섹션 간 여백 |
+| `space-12` | 48px | 페이지 상단 여백 |
+
+---
+
+## 4. 레이아웃
+
+### 페이지 구조
+
+```
+┌─────────────────────────────────────────────┐
+│  Global Header (fixed, 56px)                │
+├─────────────────────────────────────────────┤
+│  Sub Navigation (48px, 탭/필터 바)           │
+├─────────────────────────────────────────────┤
+│  Content Area (max-width: 1200px, centered) │
+│  ┌─────────────────────┬───────────────────┐│
+│  │  Main (flex: 1)     │  Sidebar (280px)  ││
+│  └─────────────────────┴───────────────────┘│
+└─────────────────────────────────────────────┘
+```
+
+### 그리드
+
+- 메인 컨텐츠: 12컬럼 그리드, gap `24px`
+- 카드 목록: `repeat(auto-fill, minmax(300px, 1fr))`
+- 사이드바: 고정 너비 `280px`, 메인 영역과 gap `24px`
+
+### 반응형 브레이크포인트
+
+| 이름 | 범위 | 변경사항 |
+|---|---|---|
+| `mobile` | ~767px | 단일 컬럼, 사이드바 숨김 |
+| `tablet` | 768~1023px | 2컬럼, 사이드바 드로어 |
+| `desktop` | 1024px~ | 풀 레이아웃 |
+
+---
+
+## 5. 컴포넌트
+
+### 5.1 헤더
+
+- 배경: `neutral-000`, 하단 border `1px solid border-default`
+- 높이: `56px`
+- 로고: `brand-primary` 색상, 볼드
+- 내비게이션 링크: `text-base`, 기본 `neutral-700`, 활성 `brand-accent` + 하단 `2px solid brand-accent`
+- 검색바: 라운드 `9999px`, border `1px solid neutral-300`, 포커스 시 `brand-accent` 아웃라인
+
+### 5.2 상태 뱃지 (Todo Status)
+
+둥근 pill 형태, 내부 패딩 `4px 10px`, `text-xs`, 굵기 `600`.
+
+| 상태 | 배경 | 텍스트 |
+|---|---|---|
+| UPCOMING | `#E3F2FD` | `#1565C0` |
+| IN_PROGRESS | `#E8F5E9` | `#1B5E20` |
+| COMPLETED | `#E8F5E9` | `#0B8043` |
+| LATE_COMPLETED | `#FFF3E0` | `#E65100` |
+| FAILED | `#FFEBEE` | `#C62828` |
+
+### 5.3 Todo 카드
+
+```
+┌────────────────────────────────────────────┐
+│  [상태 뱃지]                   [메뉴 아이콘] │
+│  제목 (text-md, neutral-900)               │
+│  설명 (text-sm, neutral-500, 2줄 클램프)   │
+│  ─────────────────────────────────────── │
+│  📅 2026-04-01 ~ 2026-04-07   [완료 토글] │
+└────────────────────────────────────────────┘
+```
+
+- 배경: `surface-card`, 테두리 `1px solid border-default`, radius `8px`
+- 패딩: `space-4` (`16px`)
+- hover: 배경 `neutral-100`, shadow `0 2px 8px rgba(0,0,0,0.08)`
+- 날짜: `font-mono`, `text-xs`, `neutral-500`
+
+### 5.4 버튼
+
+| 종류 | 배경 | 텍스트 | Border | hover |
+|---|---|---|---|---|
+| Primary | `brand-accent` | `#FFFFFF` | none | 10% 어둡게 |
+| Secondary | `neutral-000` | `neutral-700` | `1px solid border-strong` | `neutral-100` bg |
+| Danger | `#FFEBEE` | `status-negative` | none | `#FFCDD2` bg |
+| Ghost | transparent | `neutral-700` | none | `neutral-100` bg |
+
+- 높이: 기본 `36px`, 대형 `44px`
+- radius: `6px`
+- 패딩: `8px 16px`
+- 비활성: opacity `0.4`, cursor `not-allowed`
+
+### 5.5 입력 필드
+
+- 높이: `40px`
+- radius: `6px`
+- border: `1px solid neutral-300`
+- 포커스: `border-color: brand-accent`, `box-shadow: 0 0 0 3px rgba(0,133,124,0.15)`
+- 에러: `border-color: status-negative`, 하단 에러 메시지 `text-xs status-negative`
+- placeholder: `neutral-300`
+
+### 5.6 페이지네이션
+
+Yahoo Finance 목록 하단 스타일 기반.
+
+- 컨테이너: `display: flex`, `gap: 4px`, `align-items: center`
+- 페이지 버튼: `32px × 32px`, radius `4px`, 현재 페이지 `brand-accent` 배경 + 흰 텍스트
+- 이전/다음: 화살표 아이콘 버튼, ghost 스타일
+
+### 5.7 빈 상태 (Empty State)
+
+- 아이콘: 64px, `neutral-300`
+- 제목: `text-md`, `neutral-500`
+- 설명: `text-sm`, `neutral-300`
+- 액션 버튼 (선택): Primary 버튼
+
+### 5.8 토스트 / 알림
+
+- 위치: 우측 상단, `top: 72px`
+- 너비: `320px`, radius `8px`
+- 성공: 좌측 `4px solid status-positive`
+- 에러: 좌측 `4px solid status-negative`
+- 자동 사라짐: 3초
+
+---
+
+## 6. 아이콘
+
+- 라이브러리: [Lucide React](https://lucide.dev)
+- 기본 크기: `16px` (인라인), `20px` (버튼 내), `24px` (독립 액션)
+- 색상: 텍스트 색상 상속 (`currentColor`)
+
+---
+
+## 7. 모션
+
+```css
+--transition-fast:  100ms ease;   /* hover, focus */
+--transition-base:  200ms ease;   /* 상태 변화, 뱃지 */
+--transition-slow:  300ms ease;   /* 모달, 드로어 */
+```
+
+- 레이아웃 변화: `transition: all var(--transition-base)`
+- 카드 hover: `transform: translateY(-1px)` + shadow 변화
+- 페이지 전환: fade `opacity 0→1`, 200ms
+
+---
+
+## 8. 접근성
+
+- 최소 색상 대비: 일반 텍스트 `4.5:1`, 대형 텍스트 `3:1` (WCAG AA)
+- 포커스 링: `outline: 2px solid brand-accent`, `outline-offset: 2px`
+- 터치 타깃 최소 크기: `44px × 44px`
+- 스크린 리더용 숨김 클래스: `.sr-only`

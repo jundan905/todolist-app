@@ -568,10 +568,11 @@ COMPLETED + isCompleted=false → IN_PROGRESS (또는 UPCOMING, FAILED 상황에
 | | Zustand | 4.x | 상태 관리 |
 | | TanStack Query | 5.x | 서버 상태 관리 |
 | **Backend** | Node.js | 18+ | 런타임 |
-| | Express | 4.x | 웹 프레임워크 |
+| | Express | 5.x | 웹 프레임워크 |
 | | pg | 8.x | PostgreSQL 클라이언트 (Connection Pool 포함) |
-| | bcrypt | 5.x | 비밀번호 암호화 |
+| | bcrypt | 6.x | 비밀번호 암호화 |
 | | jsonwebtoken | 9.x | JWT 토큰 발급/검증 |
+| | swagger-ui-express | 5.x | Swagger UI 서빙 (`/docs`) |
 | | axios | 1.x | HTTP 클라이언트 (프론트엔드) |
 | **Database** | PostgreSQL | 14+ | 관계형 DB |
 | **DevOps** | TBD | - | 배포환경 (추후 결정) |
