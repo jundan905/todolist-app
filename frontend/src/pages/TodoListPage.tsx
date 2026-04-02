@@ -6,13 +6,16 @@ import { TodoFilter } from '../components/todo/TodoFilter';
 import { TodoList } from '../components/todo/TodoList';
 import { TodoForm } from '../components/todo/TodoForm';
 import { ThemeToggle } from '../components/common/ThemeToggle';
+import { LanguageSelector } from '../components/common/LanguageSelector';
 import type { TodoFilters } from '../types/todo.types';
 import { useToastStore } from '../components/common/Toast';
+import { useTranslation } from 'react-i18next';
 
 function TodoListPage() {
   const user = useAuthStore((s) => s.user);
   const clearAuth = useAuthStore((s) => s.clearAuth);
   const { addToast } = useToastStore();
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filters, setFilters] = useState<TodoFilters>({ page: 1, limit: 20, sortBy: 'createdAt', sortOrder: 'desc' });
 
@@ -43,9 +46,10 @@ function TodoListPage() {
           todolist-app
         </span>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <LanguageSelector />
           <ThemeToggle />
           <span style={{ fontSize: '14px', color: 'var(--neutral-700)' }}>
-            {user?.name ?? '사용자'}
+            {user?.name ?? t('common.user')}
           </span>
           <button
             type="button"
@@ -60,7 +64,7 @@ function TodoListPage() {
               color: 'var(--neutral-700)',
             }}
           >
-            로그아웃
+            {t('common.logout')}
           </button>
         </div>
       </header>
@@ -73,7 +77,7 @@ function TodoListPage() {
             marginBottom: '20px',
           }}
         >
-          <h1 style={{ fontSize: '20px', fontWeight: 700 }}>할일 목록</h1>
+          <h1 style={{ fontSize: '20px', fontWeight: 700 }}>{t('todo.list.title')}</h1>
           <button
             type="button"
             onClick={() => setIsModalOpen(true)}
@@ -88,7 +92,7 @@ function TodoListPage() {
               fontWeight: 600,
             }}
           >
-            + 할일 추가
+            {t('todo.list.addButton')}
           </button>
         </div>
         <div style={{ marginBottom: '20px' }}>

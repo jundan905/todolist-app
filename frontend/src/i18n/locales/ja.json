@@ -1,0 +1,97 @@
+{
+  "auth": {
+    "login": {
+      "title": "ログイン",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "submit": "ログイン",
+      "noAccount": "アカウントをお持ちでないですか？",
+      "signup": "アカウント作成"
+    },
+    "signup": {
+      "title": "アカウント作成",
+      "subtitle": "タスク管理を始めましょう",
+      "name": "名前",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "passwordHint": "8-20 文字、大文字、小文字、数字、特殊文字",
+      "confirmPassword": "パスワード確認",
+      "submit": "アカウント作成",
+      "hasAccount": "既にアカウントをお持ちですか？",
+      "login": "ログイン"
+    }
+  },
+  "todo": {
+    "list": {
+      "title": "Todo リスト",
+      "addButton": "+ Todo 追加",
+      "empty": "登録された Todo がありません"
+    },
+    "filter": {
+      "all": "すべて",
+      "upcoming": "予定",
+      "inProgress": "進行中",
+      "completed": "完了",
+      "lateCompleted": "遅延完了",
+      "failed": "失敗",
+      "closed": "終了"
+    },
+    "sort": {
+      "createdAt": "作成日",
+      "startDate": "開始日",
+      "dueDate": "終了日"
+    },
+    "order": {
+      "desc": "降順",
+      "asc": "昇順"
+    },
+    "itemsPerPage": {
+      "label": "件"
+    },
+    "pagination": {
+      "previous": "前へ",
+      "next": "次へ",
+      "pageInfo": "{{current}} / {{total}} ページ (合計{{totalItems}}件)"
+    },
+    "card": {
+      "edit": "編集",
+      "complete": "完了にする",
+      "uncomplete": "未完了にする"
+    },
+    "form": {
+      "title": "Todo 追加",
+      "titleLabel": "タイトル",
+      "titlePlaceholder": "Todo タイトルを入力してください",
+      "descriptionLabel": "説明",
+      "descriptionPlaceholder": "詳細を入力してください (オプション)",
+      "startDateLabel": "開始日",
+      "dueDateLabel": "終了日",
+      "characterCount": "{{count}}/{{max}}",
+      "submit": "保存",
+      "cancel": "キャンセル",
+      "readOnlyInfo": "完了状況:",
+      "completed": "完了",
+      "notCompleted": "未完了"
+    },
+    "detail": {
+      "startDate": "開始日",
+      "dueDate": "終了日",
+      "createdAt": "作成日",
+      "completed": "完了",
+      "notCompleted": "未完了",
+      "edit": "編集",
+      "back": "戻る"
+    },
+    "edit": {
+      "title": "Todo 編集"
+    }
+  },
+  "common": {
+    "logout": "ログアウト",
+    "user": "ユーザー",
+    "error": {
+      "loadFailed": "Todo の読み込みに失敗しました。",
+      "serverError": "サーバーエラーが発生しました。しばらくしてからもう一度お試しください。"
+    }
+  }
+}

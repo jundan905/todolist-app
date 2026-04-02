@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useLogin } from '../../hooks/useLogin';
 import { getErrorMessage } from '../../utils/errorUtils';
 
 export function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { t } = useTranslation();
   const loginMutation = useLogin();
 
   const errorMessage = loginMutation.error ? getErrorMessage(loginMutation.error) : null;
@@ -19,7 +21,7 @@ export function LoginForm() {
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <div>
         <label htmlFor="email" style={{ display: 'block', marginBottom: '4px', fontWeight: 500 }}>
-          이메일
+          {t('auth.login.email')}
         </label>
         <input
           id="email"
@@ -38,7 +40,7 @@ export function LoginForm() {
       </div>
       <div>
         <label htmlFor="password" style={{ display: 'block', marginBottom: '4px', fontWeight: 500 }}>
-          비밀번호
+          {t('auth.login.password')}
         </label>
         <input
           id="password"
@@ -74,12 +76,12 @@ export function LoginForm() {
           cursor: loginMutation.isPending ? 'not-allowed' : 'pointer',
         }}
       >
-        {loginMutation.isPending ? '로그인 중...' : '로그인'}
+        {loginMutation.isPending ? '...' : t('auth.login.submit')}
       </button>
       <p style={{ textAlign: 'center', fontSize: '14px', color: 'var(--neutral-500)' }}>
-        계정이 없으신가요?{' '}
+        {t('auth.login.noAccount')}{' '}
         <Link to="/signup" style={{ color: 'var(--brand-primary)', fontWeight: 500 }}>
-          회원가입
+          {t('auth.login.signup')}
         </Link>
       </p>
     </form>

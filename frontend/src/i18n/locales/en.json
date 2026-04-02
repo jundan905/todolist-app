@@ -1,0 +1,97 @@
+{
+  "auth": {
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Login",
+      "noAccount": "Don't have an account?",
+      "signup": "Sign Up"
+    },
+    "signup": {
+      "title": "Sign Up",
+      "subtitle": "Start managing your tasks",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "passwordHint": "8-20 characters, uppercase, lowercase, number, special character",
+      "confirmPassword": "Confirm Password",
+      "submit": "Create Account",
+      "hasAccount": "Already have an account?",
+      "login": "Login"
+    }
+  },
+  "todo": {
+    "list": {
+      "title": "Todo List",
+      "addButton": "+ Add Todo",
+      "empty": "No todos registered"
+    },
+    "filter": {
+      "all": "All",
+      "upcoming": "Upcoming",
+      "inProgress": "In Progress",
+      "completed": "Completed",
+      "lateCompleted": "Late Completed",
+      "failed": "Failed",
+      "closed": "Closed"
+    },
+    "sort": {
+      "createdAt": "Created At",
+      "startDate": "Start Date",
+      "dueDate": "Due Date"
+    },
+    "order": {
+      "desc": "Descending",
+      "asc": "Ascending"
+    },
+    "itemsPerPage": {
+      "label": "items"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "pageInfo": "{{current}} / {{total}} pages ({{totalItems}} items)"
+    },
+    "card": {
+      "edit": "Edit",
+      "complete": "Mark Complete",
+      "uncomplete": "Mark Incomplete"
+    },
+    "form": {
+      "title": "Add Todo",
+      "titleLabel": "Title",
+      "titlePlaceholder": "Enter todo title",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Enter details (optional)",
+      "startDateLabel": "Start Date",
+      "dueDateLabel": "Due Date",
+      "characterCount": "{{count}}/{{max}}",
+      "submit": "Save",
+      "cancel": "Cancel",
+      "readOnlyInfo": "Status:",
+      "completed": "Completed",
+      "notCompleted": "Not Completed"
+    },
+    "detail": {
+      "startDate": "Start Date",
+      "dueDate": "Due Date",
+      "createdAt": "Created At",
+      "completed": "Completed",
+      "notCompleted": "Not Completed",
+      "edit": "Edit",
+      "back": "Back"
+    },
+    "edit": {
+      "title": "Edit Todo"
+    }
+  },
+  "common": {
+    "logout": "Logout",
+    "user": "User",
+    "error": {
+      "loadFailed": "Failed to load todos.",
+      "serverError": "Server error occurred. Please try again later."
+    }
+  }
+}

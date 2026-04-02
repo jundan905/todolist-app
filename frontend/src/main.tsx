@@ -7,6 +7,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { queryClient } from './queryClient';
 import App from './App';
 import { useThemeStore } from './stores/useThemeStore';
+import './i18n/config';
 
 // 저장된 테마 초기화
 const savedTheme = useThemeStore.getState().theme;
