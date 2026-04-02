@@ -41,8 +41,9 @@ export function useToggleTodo(filters: TodoFilters) {
         queryClient.setQueryData(todoKeys.list(filters), context.previousData);
       }
     },
-    onSettled: () => {
+    onSettled: (_data, _error, variables) => {
       void queryClient.invalidateQueries({ queryKey: todoKeys.lists() });
+      void queryClient.invalidateQueries({ queryKey: todoKeys.detail(variables.todoId) });
     },
   });
 }

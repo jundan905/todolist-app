@@ -3,7 +3,7 @@ import type { TodoItem } from '../../types/todo.types';
 import { useUpdateTodo } from '../../hooks/useUpdateTodo';
 import { getErrorMessage } from '../../utils/errorUtils';
 import { isDueDateValid, isValidLength } from '../../utils/validationUtils';
-import { formatDateTime } from '../../utils/dateUtils';
+import { formatDateTime, toLocalDateString } from '../../utils/dateUtils';
 
 interface TodoEditFormProps {
   todo: TodoItem;
@@ -14,8 +14,8 @@ interface TodoEditFormProps {
 export function TodoEditForm({ todo, onSuccess, onCancel }: TodoEditFormProps) {
   const [title, setTitle] = useState(todo.title);
   const [description, setDescription] = useState(todo.description ?? '');
-  const [startDate, setStartDate] = useState(todo.startDate);
-  const [dueDate, setDueDate] = useState(todo.dueDate);
+  const [startDate, setStartDate] = useState(() => toLocalDateString(todo.startDate));
+  const [dueDate, setDueDate] = useState(() => toLocalDateString(todo.dueDate));
 
   const updateMutation = useUpdateTodo(todo.id);
 

@@ -1,7 +1,16 @@
+export function toLocalDateString(isoStr: string): string {
+  const d = new Date(isoStr);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
 export function formatDate(dateStr: string): string {
-  // ISO 형식 (2026-04-08T15:00:00.000Z) 에서 날짜 부분만 추출
-  const dateOnly = dateStr.split('T')[0];
-  const [year, month, day] = dateOnly.split('-');
+  const d = new Date(dateStr);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
   return `${year}년 ${month}월 ${day}일`;
 }
 

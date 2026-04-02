@@ -1,5 +1,16 @@
 import { describe, it, expect } from 'vitest';
-import { formatDate, compareDates, getTodayString } from '../dateUtils';
+import { formatDate, compareDates, getTodayString, toLocalDateString } from '../dateUtils';
+
+describe('toLocalDateString', () => {
+  it('YYYY-MM-DD 형식을 그대로 반환', () => {
+    expect(toLocalDateString('2026-04-01')).toBe('2026-04-01');
+  });
+
+  it('ISO UTC 문자열을 로컬 YYYY-MM-DD 형식으로 변환', () => {
+    const result = toLocalDateString('2026-04-01T00:00:00.000Z');
+    expect(result).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  });
+});
 
 describe('formatDate', () => {
   it('YYYY-MM-DD를 YYYY년 MM월 DD일 형식으로 변환', () => {
