@@ -1,0 +1,47 @@
+:root {
+  /* 브랜드 */
+  --brand-primary: #6001D2;
+  --brand-accent: #00857C;
+
+  /* 상태 */
+  --status-upcoming-bg: #E3F2FD;
+  --status-upcoming-text: #1565C0;
+  --status-inprogress-bg: #E8F5E9;
+  --status-inprogress-text: #1B5E20;
+  --status-completed-bg: #E8F5E9;
+  --status-completed-text: #0B8043;
+  --status-late-bg: #FFF3E0;
+  --status-late-text: #E65100;
+  --status-failed-bg: #FFEBEE;
+  --status-failed-text: #C62828;
+
+  /* 중립 */
+  --neutral-900: #1A1A1A;
+  --neutral-700: #404040;
+  --neutral-500: #767676;
+  --neutral-300: #BDBDBD;
+  --neutral-100: #F5F5F5;
+  --neutral-000: #FFFFFF;
+
+  /* 서피스 */
+  --surface-page: #F8F8F8;
+  --surface-card: #FFFFFF;
+  --border-default: #E0E0E0;
+  --border-strong: #BDBDBD;
+
+  /* 타이포 */
+  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--surface-page);
+  color: var(--neutral-900);
+}
