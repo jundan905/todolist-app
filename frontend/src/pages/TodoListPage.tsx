@@ -5,6 +5,7 @@ import { Modal } from '../components/common/Modal';
 import { TodoFilter } from '../components/todo/TodoFilter';
 import { TodoList } from '../components/todo/TodoList';
 import { TodoForm } from '../components/todo/TodoForm';
+import { ThemeToggle } from '../components/common/ThemeToggle';
 import type { TodoFilters } from '../types/todo.types';
 import { useToastStore } from '../components/common/Toast';
 
@@ -42,6 +43,7 @@ function TodoListPage() {
           todolist-app
         </span>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <ThemeToggle />
           <span style={{ fontSize: '14px', color: 'var(--neutral-700)' }}>
             {user?.name ?? '사용자'}
           </span>

@@ -1,5 +1,7 @@
 export function formatDate(dateStr: string): string {
-  const [year, month, day] = dateStr.split('-');
+  // ISO 형식 (2026-04-08T15:00:00.000Z) 에서 날짜 부분만 추출
+  const dateOnly = dateStr.split('T')[0];
+  const [year, month, day] = dateOnly.split('-');
   return `${year}년 ${month}월 ${day}일`;
 }
 

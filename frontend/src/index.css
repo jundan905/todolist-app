@@ -34,6 +34,39 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
+/* 다크모드 */
+[data-theme='dark'] {
+  /* 브랜드 */
+  --brand-primary: #8B3DFF;
+  --brand-accent: #00B5A8;
+
+  /* 상태 */
+  --status-upcoming-bg: #1E3A5F;
+  --status-upcoming-text: #64B5F6;
+  --status-inprogress-bg: #1B5E20;
+  --status-inprogress-text: #81C784;
+  --status-completed-bg: #1B5E20;
+  --status-completed-text: #81C784;
+  --status-late-bg: #E65100;
+  --status-late-text: #FFB74D;
+  --status-failed-bg: #B71C1C;
+  --status-failed-text: #E57373;
+
+  /* 중립 */
+  --neutral-900: #E0E0E0;
+  --neutral-700: #BDBDBD;
+  --neutral-500: #757575;
+  --neutral-300: #424242;
+  --neutral-100: #2D2D2D;
+  --neutral-000: #1A1A1A;
+
+  /* 서피스 */
+  --surface-page: #121212;
+  --surface-card: #1E1E1E;
+  --border-default: #333333;
+  --border-strong: #424242;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;

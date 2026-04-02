@@ -6,29 +6,32 @@ export function computeTodoStatus(
   isCompleted: boolean,
   completedAt: string | null
 ): TodoStatus {
-  const today = new Date(new Date().toISOString().slice(0, 10) + 'T00:00:00');
-  const start = new Date(startDate + 'T00:00:00');
-  const due = new Date(dueDate + 'T00:00:00');
+  // ISO 날짜 문자열을 Date 객체로 변환 (UTC 기준)
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  const start = new Date(startDate);
+  start.setHours(0, 0, 0, 0);
+  
+  const due = new Date(dueDate);
+  due.setHours(23, 59, 59, 999); // 종료일은 하루 끝까지 유효
 
   if (isCompleted && completedAt !== null) {
     const completed = new Date(completedAt);
-    const completedDay = new Date(
-      completed.getFullYear() + '-' +
-      String(completed.getMonth() + 1).padStart(2, '0') + '-' +
-      String(completed.getDate()).padStart(2, '0') + 'T00:00:00'
-    );
-    if (completedDay <= due) {
+    // 완료일이 dueDate 이내이면 COMPLETED, 초과하면 LATE_COMPLETED
+    if (completed <= due) {
       return 'COMPLETED';
     } else {
       return 'LATE_COMPLETED';
     }
   }
 
+  // 미완료 상태
   if (today < start) {
     return 'UPCOMING';
   }
 
-  if (start <= today && today <= due && !isCompleted) {
+  if (today <= due && !isCompleted) {
     return 'IN_PROGRESS';
   }
 

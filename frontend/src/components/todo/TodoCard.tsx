@@ -3,6 +3,7 @@ import type { TodoItem } from '../../types/todo.types';
 import { TodoStatusBadge } from './TodoStatusBadge';
 import { TodoCheckButton } from './TodoCheckButton';
 import { formatDate } from '../../utils/dateUtils';
+import { computeTodoStatus } from '../../utils/todoStatusUtils';
 import { Calendar, Pencil } from 'lucide-react';
 
 interface TodoCardProps {
@@ -12,6 +13,14 @@ interface TodoCardProps {
 }
 
 export function TodoCard({ todo, onToggle, isToggling }: TodoCardProps) {
+  // 프론트엔드에서 상태 재계산 (백엔드 날짜 포맷 이슈 대응)
+  const calculatedStatus = computeTodoStatus(
+    todo.startDate,
+    todo.dueDate,
+    todo.isCompleted,
+    todo.completedAt
+  );
+
   return (
     <div
       style={{
@@ -25,7 +34,7 @@ export function TodoCard({ todo, onToggle, isToggling }: TodoCardProps) {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <TodoStatusBadge status={todo.status} />
+        <TodoStatusBadge status={calculatedStatus} />
         <Link
           to={`/todos/${todo.id}/edit`}
           aria-label="수정"

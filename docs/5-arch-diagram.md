@@ -35,7 +35,7 @@ graph LR
     classDef note fill:#fff9c4
 ```
 
-> 의존 방향은 왼쪽 → 오른쪽 단방향. Repository는 Service를 모르고, Service는 Controller를 모른다.
+> 의존 방향은 왼쪽 → 오른쪽 단방향. Repository 는 Service 를 모르고, Service 는 Controller 를 모른다.
 
 ---
 
@@ -48,14 +48,114 @@ graph LR
     FeatureComponents --> QueryHooks["Query Hooks\n(TanStack Query)"]
     FeatureComponents --> Store["Store\n(Zustand)"]
     QueryHooks --> APIClient["API Client\n(axios)"]
+    Store --> ThemeStore["Theme Store\n(localStorage)"]
 ```
 
 > - **Pages**: 라우트 단위 최상위 컴포넌트
 > - **Feature Components**: Todo 도메인 기능 단위 컴포넌트
-> - **UI Components**: props만으로 동작하는 순수 표현 컴포넌트
+> - **UI Components**: props 만으로 동작하는 순수 표현 컴포넌트
 > - **Query Hooks**: 서버 상태 관리 (할일 목록, 상세 등)
-> - **Store**: 클라이언트 상태만 관리 (인증 토큰, UI 상태)
+> - **Store**: 클라이언트 상태만 관리 (인증 토큰, UI 상태, **테마**)
 > - **API Client**: axios 인스턴스, JWT 자동 첨부
+> - **Theme Store**: Zustand 기반 테마 관리, localStorage 연동
+
+---
+
+## 3.1 테마 관리 아키텍처
+
+### Zustand Theme Store 구조
+
+```typescript
+interface ThemeStore {
+  theme: 'light' | 'dark';
+  setTheme: (theme: 'light' | 'dark') => void;
+  toggleTheme: () => void;
+  initializeTheme: () => void;
+}
+
+// Store 생성
+const useThemeStore = create<ThemeStore>((set, get) => ({
+  theme: 'light', // 초기값 (시스템 설정 확인 전)
+  
+  setTheme: (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    set({ theme });
+  },
+  
+  toggleTheme: () => {
+    const newTheme = get().theme === 'light' ? 'dark' : 'light';
+    get().setTheme(newTheme);
+  },
+  
+  initializeTheme: () => {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      get().setTheme(saved);
+    } else {
+      const system = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+      get().setTheme(system);
+    }
+  }
+}));
+```
+
+### 테마 초기화 플로우
+
+```mermaid
+sequenceDiagram
+    participant App as App Mount
+    participant Store as Theme Store
+    participant LS as localStorage
+    participant System as OS 설정
+    participant DOM as DOM
+
+    App->>Store: initializeTheme()
+    Store->>LS: theme 값 조회
+    alt 저장된 값 존재
+        LS-->>Store: 'light' 또는 'dark'
+        Store->>DOM: data-theme 속성 설정
+    else 저장된 값 없음
+        Store->>System: prefers-color-scheme 확인
+        System-->>Store: dark 또는 light
+        Store->>DOM: data-theme 속성 설정
+    end
+```
+
+### 테마 토글 동작
+
+```mermaid
+sequenceDiagram
+    participant User as 사용자
+    participant Toggle as 토글 버튼
+    participant Store as Theme Store
+    participant LS as localStorage
+    participant DOM as DOM
+
+    User->>Toggle: 클릭
+    Toggle->>Store: toggleTheme()
+    Store->>Store: 현재 테마 확인
+    Store->>Store: 반대 테마로 변경
+    Store->>LS: 새 테마 저장
+    Store->>DOM: data-theme 속성 업데이트
+    Note over DOM: CSS 변수 자동 적용
+```
+
+### localStorage 스키마
+
+| 키 | 값 | 설명 |
+|---|---|---|
+| `theme` | `"light"` \| `"dark"` | 사용자 테마 선호도 |
+
+### 시스템 연동 동작
+
+| 상황 | 동작 |
+|---|---|
+| **첫 방문** | 시스템 설정 감지하여 적용 |
+| **수동 토글 후** | localStorage 에 저장된 값 우선 사용 |
+| **시스템 설정 변경** | 수동 토글 이력 있으면 무시, 없으면 반영 |
 
 ---
 
@@ -70,7 +170,7 @@ sequenceDiagram
     User->>FE: 로그인 요청 (email, password)
     FE->>BE: POST /api/auth/login
     BE-->>FE: 200 OK { accessToken }
-    FE->>FE: Zustand에 토큰 저장
+    FE->>FE: Zustand 에 토큰 저장
 
     User->>FE: 할일 목록 요청
     FE->>BE: GET /api/todos\n(Authorization: Bearer <token>)
