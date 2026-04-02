@@ -1,0 +1,64 @@
+- generic [ref=e2]:
+  - generic [ref=e151]:
+    - banner [ref=e152]:
+      - generic [ref=e153]: todolist-app
+      - generic [ref=e154]:
+        - combobox "언어 선택" [ref=e155] [cursor=pointer]:
+          - option "🇰🇷 한국어" [selected]
+          - option "🇺🇸 English"
+          - option "🇯🇵 日本語"
+        - button "다크모드로 전환" [ref=e156] [cursor=pointer]:
+          - img [ref=e157]
+        - generic [ref=e159]: 김민준
+        - button "로그아웃" [ref=e160] [cursor=pointer]
+    - main [ref=e161]:
+      - generic [ref=e162]:
+        - heading "할일 목록" [level=1] [ref=e163]
+        - button "+ 할일 추가" [ref=e164] [cursor=pointer]
+      - generic [ref=e166]:
+        - combobox "상태 필터" [ref=e167]:
+          - option "전체" [selected]
+          - option "예정"
+          - option "진행 중"
+          - option "완료"
+          - option "지연 완료"
+          - option "실패"
+          - option "종료"
+        - combobox "정렬 기준" [ref=e168]:
+          - option "생성일" [selected]
+          - option "시작일"
+          - option "종료일"
+        - combobox "정렬 방향" [ref=e169]:
+          - option "내림차순" [selected]
+          - option "오름차순"
+        - combobox "페이지당 항목 수" [ref=e170]:
+          - option "20개" [selected]
+          - option "50개"
+          - option "100개"
+      - generic [ref=e171]:
+        - generic [ref=e197]:
+          - generic [ref=e198]:
+            - generic [ref=e199]: 진행 중
+            - link "수정" [ref=e200] [cursor=pointer]:
+              - /url: /todos/0180ac90-d095-4bf5-8778-25d62a22840d/edit
+              - img [ref=e201]
+          - paragraph [ref=e204]: SNS 캠페인 기획서 작성
+          - paragraph [ref=e205]: 2분기 인스타그램/유튜브 캠페인 전략 포함
+          - generic [ref=e206]:
+            - generic [ref=e207]:
+              - img [ref=e208]
+              - text: 2026년 04월 01일 ~ 2026년 04월 05일
+            - button "완료 처리" [ref=e210] [cursor=pointer]:
+              - img [ref=e211]
+        - generic [ref=e213]:
+          - button "이전" [disabled] [ref=e214]
+          - generic [ref=e215]: 1 / 1
+          - button "다음" [disabled] [ref=e216]
+  - generic [ref=e218]:
+    - generic [ref=e219]: 할일이 추가되었습니다.
+    - button "닫기" [ref=e220] [cursor=pointer]:
+      - img [ref=e221]
+  - generic [ref=e16]:
+    - img [ref=e18]
+    - button "Open Tanstack query devtools" [ref=e66] [cursor=pointer]:
+      - img [ref=e67]

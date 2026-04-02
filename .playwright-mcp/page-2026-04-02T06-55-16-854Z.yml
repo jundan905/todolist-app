@@ -1,0 +1,20 @@
+- generic [ref=e2]:
+  - main [ref=e138]:
+    - generic [ref=e139]:
+      - heading "로그인" [level=1] [ref=e140]
+      - generic [ref=e141]:
+        - generic [ref=e142]:
+          - generic [ref=e143]: 이메일
+          - textbox "이메일" [ref=e144]
+        - generic [ref=e145]:
+          - generic [ref=e146]: 비밀번호
+          - textbox "비밀번호" [ref=e147]
+        - button "로그인" [ref=e148] [cursor=pointer]
+        - paragraph [ref=e149]:
+          - text: 계정이 없으신가요?
+          - link "회원가입" [ref=e150] [cursor=pointer]:
+            - /url: /signup
+  - generic [ref=e16]:
+    - img [ref=e18]
+    - button "Open Tanstack query devtools" [ref=e66] [cursor=pointer]:
+      - img [ref=e67]

@@ -1,0 +1,29 @@
+- generic [ref=e2]:
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - heading "회원가입" [level=1] [ref=e5]
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]: 이름
+          - textbox "이름" [ref=e9]: 김민준
+        - generic [ref=e10]:
+          - generic [ref=e11]: 이메일
+          - textbox "이메일" [ref=e12]: minjun.kim@startup.com
+        - generic [ref=e13]:
+          - generic [ref=e14]: 비밀번호
+          - textbox "비밀번호" [ref=e15]: Startup!23
+          - list [ref=e119]:
+            - listitem [ref=e120]: ✓ 8~20자
+            - listitem [ref=e121]: ✓ 대문자 포함
+            - listitem [ref=e122]: ✓ 소문자 포함
+            - listitem [ref=e123]: ✓ 숫자 포함
+            - listitem [ref=e124]: ✓ 특수문자(!@#$%^&*) 포함
+        - generic [ref=e16]:
+          - generic [ref=e17]: 비밀번호 확인
+          - textbox "비밀번호 확인" [ref=e18]: Startup!23
+        - alert [ref=e125]: 이미 사용 중인 이메일입니다.
+        - button "회원가입" [ref=e19] [cursor=pointer]
+  - generic [ref=e20]:
+    - img [ref=e22]
+    - button "Open Tanstack query devtools" [ref=e70] [cursor=pointer]:
+      - img [ref=e71]

@@ -1,0 +1,32 @@
+- generic [ref=e2]:
+  - generic [ref=e4]:
+    - heading "할일 수정" [level=1] [ref=e5]
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e9]:
+          - generic [ref=e10]: 제목 *
+          - generic [ref=e11]: 14/200
+        - textbox "제목 *" [ref=e12]: SNS 캠페인 기획서 작성
+      - generic [ref=e13]:
+        - generic [ref=e14]:
+          - generic [ref=e15]: 설명
+          - generic [ref=e16]: 23/2000
+        - textbox "설명" [ref=e17]: 2분기 인스타그램/유튜브 캠페인 전략 포함
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]: 시작일 *
+          - textbox "시작일 *" [ref=e21]
+        - generic [ref=e22]:
+          - generic [ref=e23]: 종료일 *
+          - textbox "종료일 *" [ref=e24]
+          - paragraph [ref=e25]: 종료일은 시작일 이후여야 합니다.
+      - generic [ref=e26]:
+        - generic [ref=e27]: "완료 여부: 완료"
+        - generic [ref=e28]: "완료일시: 2026년 04월 02일 16:01"
+      - generic [ref=e29]:
+        - button "취소" [ref=e30] [cursor=pointer]
+        - button "저장" [disabled] [ref=e31]
+  - generic [ref=e32]:
+    - img [ref=e34]
+    - button "Open Tanstack query devtools" [ref=e82] [cursor=pointer]:
+      - img [ref=e83]

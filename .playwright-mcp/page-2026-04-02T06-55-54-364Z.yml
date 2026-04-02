@@ -1,0 +1,65 @@
+- generic [ref=e2]:
+  - generic [ref=e151]:
+    - banner [ref=e152]:
+      - generic [ref=e153]: todolist-app
+      - generic [ref=e154]:
+        - combobox "언어 선택" [ref=e155] [cursor=pointer]:
+          - option "🇰🇷 한국어" [selected]
+          - option "🇺🇸 English"
+          - option "🇯🇵 日本語"
+        - button "다크모드로 전환" [ref=e156] [cursor=pointer]:
+          - img [ref=e157]
+        - generic [ref=e159]: 김민준
+        - button "로그아웃" [ref=e160] [cursor=pointer]
+    - main [ref=e161]:
+      - generic [ref=e162]:
+        - heading "할일 목록" [level=1] [ref=e163]
+        - button "+ 할일 추가" [active] [ref=e164] [cursor=pointer]
+      - generic [ref=e166]:
+        - combobox "상태 필터" [ref=e167]:
+          - option "전체" [selected]
+          - option "예정"
+          - option "진행 중"
+          - option "완료"
+          - option "지연 완료"
+          - option "실패"
+          - option "종료"
+        - combobox "정렬 기준" [ref=e168]:
+          - option "생성일" [selected]
+          - option "시작일"
+          - option "종료일"
+        - combobox "정렬 방향" [ref=e169]:
+          - option "내림차순" [selected]
+          - option "오름차순"
+        - combobox "페이지당 항목 수" [ref=e170]:
+          - option "20개" [selected]
+          - option "50개"
+          - option "100개"
+      - generic [ref=e171]: 등록된 할일이 없습니다
+    - dialog [ref=e173]:
+      - heading "할일 추가" [level=2] [ref=e174]
+      - generic [ref=e175]:
+        - generic [ref=e176]:
+          - generic [ref=e177]:
+            - generic [ref=e178]: 제목 *
+            - generic [ref=e179]: 0/200
+          - textbox "제목 *" [ref=e180]
+        - generic [ref=e181]:
+          - generic [ref=e182]:
+            - generic [ref=e183]: 설명
+            - generic [ref=e184]: 0/2000
+          - textbox "설명" [ref=e185]
+        - generic [ref=e186]:
+          - generic [ref=e187]:
+            - generic [ref=e188]: 시작일 *
+            - textbox "시작일 *" [ref=e189]: 2026-04-02
+          - generic [ref=e190]:
+            - generic [ref=e191]: 종료일 *
+            - textbox "종료일 *" [ref=e192]: 2026-04-02
+        - generic [ref=e193]:
+          - button "취소" [ref=e194] [cursor=pointer]
+          - button "저장" [disabled] [ref=e195]
+  - generic [ref=e16]:
+    - img [ref=e18]
+    - button "Open Tanstack query devtools" [ref=e66] [cursor=pointer]:
+      - img [ref=e67]

@@ -1,0 +1,25 @@
+- generic [ref=e2]:
+  - generic [ref=e132]:
+    - generic [ref=e133]:
+      - button "뒤로가기" [ref=e134] [cursor=pointer]:
+        - img [ref=e135]
+      - generic [ref=e137]: 지연 완료
+    - heading "SNS 캠페인 기획서 작성" [level=1] [ref=e138]
+    - paragraph [ref=e139]: "2분기 인스타그램/유튜브 캠페인 전략 포함 - 수정됨: 예산 계획 추가"
+    - generic [ref=e140]:
+      - generic [ref=e141]: "시작일: 2026년 04월 01일"
+      - generic [ref=e142]: "종료일: 2026년 04월 09일"
+      - generic [ref=e143]: "완료일시: 2026년 04월 02일 16:01"
+      - generic [ref=e144]: "생성일: 2026년 04월 02일 15:56"
+    - generic [ref=e145]:
+      - button "완료 취소" [ref=e146] [cursor=pointer]:
+        - img [ref=e147]
+      - generic [ref=e150]: 완료됨
+    - link "수정" [ref=e152] [cursor=pointer]:
+      - /url: /todos/0180ac90-d095-4bf5-8778-25d62a22840d/edit
+      - img [ref=e153]
+      - text: 수정
+  - generic [ref=e32]:
+    - img [ref=e34]
+    - button "Open Tanstack query devtools" [ref=e82] [cursor=pointer]:
+      - img [ref=e83]
