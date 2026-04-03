@@ -1,7 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
-import swaggerSpec from '../../swagger/swagger.json';
+import swaggerSpec from '../swagger.json';
 import { config } from './config/index';
 import { requestLogger } from './middlewares/requestLogger';
 import { errorMiddleware } from './middlewares/errorMiddleware';
