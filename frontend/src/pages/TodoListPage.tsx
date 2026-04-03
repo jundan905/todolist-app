@@ -43,7 +43,7 @@ function TodoListPage() {
         }}
       >
         <span style={{ fontSize: '18px', fontWeight: 700, color: 'var(--brand-primary)' }}>
-          todolist-app
+          할일관리 앱ㅋㅋ
         </span>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <LanguageSelector />
