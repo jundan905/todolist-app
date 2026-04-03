@@ -9,8 +9,6 @@ export function LanguageSelector() {
     { code: 'ja', label: '日本語', flag: '🇯🇵' },
   ];
 
-  const currentLanguage = languages.find((lang) => lang.code === i18n.language) || languages[0];
-
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     i18n.changeLanguage(e.target.value);
   };
